@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+<style>
+
+body {
+	padding: 0px;
+    margin: 0px;
+}
+
+#settingsicon {
+	width: 20px;
+    -webkit-transition: transform 1.5s, opacity 1.5s, width 1.5s; 
+    transition: transform 1.5s, opacity 1.5s, width 1.5s;
+    opacity: 0.5;
+}
+
+#settingsicon:hover {
+	transform: rotate(300deg);
+    opacity: 1;
+    width: 30px;
+}
+
+#bg-orange-blue {
+	width: 100wh;
+	height: 100vh;
+	color: #fff;
+    background: linear-gradient(-45deg, #FF9F1C, #FFBF69, #2EC4B6, #CBF3F0);
+	background-size: 400% 400%;
+	-webkit-animation: Gradient 15s ease infinite;
+	-moz-animation: Gradient 15s ease infinite;
+	animation: Gradient 15s ease infinite;
+}
+
+@-webkit-keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+
+@-moz-keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+
+@keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+
+
+#welcomeback {
+	font-family: 'Open Sans';
+    text-shadow: 1px 1px black;
+	font-weight: 300;
+	text-align: center;
+	position: absolute;
+	top: 40%;
+	right: 0;
+	left: 0;
+}
+
+</style>
+</head>
+<body onload="checkCookie()">
+
+<script>
+
+function setCookie(cname,cvalue) {
+  document.cookie = cname + "=" + cvalue + ";";
+}
+
+function getCookie(cname) {
+  var name = cname + "=";
+  var decodedCookie = decodeURIComponent(document.cookie);
+  var ca = decodedCookie.split(';');
+  for(var i = 0; i < ca.length; i++) {
+    var c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
+
+function checkCookie() {
+  var user=getCookie("username");
+  if (user != "") {
+    document.getElementById("welcomeback").innerHTML = "Welcome back, " + user;
+    document.title = "Welcome back," + user;
+  } else {
+     user = prompt("Please enter your name:","");
+     if (user != "" && user != null) {
+       setCookie("username", user, 30);
+     }
+  }
+}
+
+function resetKoekjes(){
+    user = prompt("Please enter your name:","");
+     if (user != "" && user != null) {
+       setCookie("username", user, 30);
+     }
+}
+
+</script>
+
+
+<script>
+function noscroll() {
+  window.scrollTo( 0, 0 );
+}
+
+window.addEventListener('scroll', noscroll);
+</script>
+
+<div id="bg-orange-blue">
+
+<img src="https://img.icons8.com/ios/50/000000/settings-filled.png" title="Settings" onclick="resetKoekjes();checkCookie();" id="settingsicon">
+
+<h1 id="welcomeback"></h1>
+
+</div>
+
+</body>
