@@ -196,6 +196,10 @@ window.setInterval(function(){
         var NEWhours = "" + hours;
     }
     
+    if (name == ""){
+        window.location = "http://ItsBrian.github.io/Homescreen-Generator";
+    }
+
       document.getElementById("welcomeback").innerHTML = "Welcome back, " + name.replace("%20", " ");;;
       document.getElementById("welcomeback").style.fontSize = nameSize + "px";
   
